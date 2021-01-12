@@ -74,12 +74,22 @@ export function next(n: number, d: number) {
   return Q(N(n, d) + 1);
 }
 
-export function succ(n: number, d: number) {
+export function S(n: number, d: number) {
   // 1 / (2*floor([n,d]) - [n,d] + 1)
   // 1 / (2*[d*floor(n/d), d] - [n,d] + [d,d])
   // 1 / (2*[d*floor(n/d), d] + [d - n, d])
   // 1 / [2*(d*floor(n/d) + d - n), d]
   return _reduce(d, 2 * (d * (1 + Math.floor(n / d)) - n));
+}
+
+export function P(n: number, d: number) {
+  // (-1 / [n, d]) - 1 - 2 * floor(-1 / [n, d])
+  // [-d, n] - [n, n] - 2 * floor([-d, n])
+  // [-d - n, n] - 2 * floor([-d, n])
+  // [-d - n, n] + 2 * [d * floor(d/n), n]
+  // [2 * d * floor(d/n) - d - n, n]
+  // [2 * d * (floor(d/n) - 1) - n, n]
+  return _reduce(2 * d * (Math.floor(d/n) - 1) - n, n);
 }
 
 export function prev(n: number, d: number) {
