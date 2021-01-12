@@ -22,11 +22,17 @@ const expected: [number, number][] = [
 ];
 
 describe("Calkin-Wilf tests", () => {
-  it("should calculate the Calkin-Wilf series", () => {
+  it("should calculate the Calkin-Wilf series by index", () => {
     for (let i = 0; i < expected.length; i++) {
       expect(Q(i)).to.eql(expected[i]);
     }
   });
+
+  /*for (let i = 1; i < expected.length - 1; i++) {
+    it(`S(${expected[i][0]}/${expected[i][1]}) should be ${expected[i+1][0]}/${expected[i+1][1]}`, () => {
+      expect(succ(...expected[i])).to.eql(expected[i+1]);
+    });
+  }*/
 
   it("should calculate parent & child tree relations", () => {
     for (let i = 2; i < expected.length / 2; i++) {
@@ -36,7 +42,7 @@ describe("Calkin-Wilf tests", () => {
     }
   });
 
-  it("should calculate successor relations", () => {
+  it("should calculate adjacency relations", () => {
     for (let i = 1; i < expected.length - 1; i++) {
       expect(next(...expected[i])).to.eql(expected[i + 1]);
       expect(prev(...expected[i + 1])).to.eql(expected[i]);

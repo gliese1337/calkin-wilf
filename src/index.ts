@@ -55,12 +55,15 @@ export function N(n: number, d: number) {
   let acc = 0;
   let digit = 1;
   while (n !== d) {
-    if (n < d) d -= n;
-    else {
+    if (n < d) do {
+      d -= n;
+      digit *= 2;
+    } while (n < d);
+    else do {
       n -= d
       acc += digit;
-    }
-    digit *= 2;
+      digit *= 2;
+    } while (d < n);
   }
 
   return s * (acc + digit);
@@ -69,6 +72,14 @@ export function N(n: number, d: number) {
 export function next(n: number, d: number) {
   if (n < 0 || d <= 0) throw new Error('Invalid argument');
   return Q(N(n, d) + 1);
+}
+
+export function succ(n: number, d: number) {
+  // 1 / (2*floor([n,d]) - [n,d] + 1)
+  // 1 / (2*[d*floor(n/d), d] - [n,d] + [d,d])
+  // 1 / (2*[d*floor(n/d), d] + [d - n, d])
+  // 1 / [2*(d*floor(n/d) + d - n), d]
+  return _reduce(d, 2 * (d * (1 + Math.floor(n / d)) - n));
 }
 
 export function prev(n: number, d: number) {
