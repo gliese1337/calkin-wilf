@@ -15,11 +15,7 @@ export function Q(n: number) {
 
 function _reduce(n: number, d: number) {
   let [a, b] = [n, d];
-  while (a !== b) {
-    if (a > b) a = a - b;
-    else b = b - a;
-  }
-
+  while (b) [a, b] = [b, a % b];
   return [n / a, d / a];
 }
 
@@ -56,28 +52,23 @@ export function N(n: number, d: number) {
   const s = Math.sign(n) * Math.sign(d);
   [n, d] = _reduce(Math.abs(n), Math.abs(d));
 
-  let stack = 1;
+  let acc = 0;
+  let digit = 1;
   while (n !== d) {
-    stack = stack << 1;
     if (n < d) d -= n;
     else {
       n -= d
-      stack |= 1;
+      acc += digit;
     }
+    digit *= 2;
   }
 
-  let acc = 1;
-  while(stack > 1) {
-    acc = (acc << 1) | (stack & 1);
-    stack >>= 1;
-  }
-
-  return s * acc;
+  return s * (acc + digit);
 }
 
 export function next(n: number, d: number) {
   if (n < 0 || d <= 0) throw new Error('Invalid argument');
-  return Q(N(n, d) + 1)
+  return Q(N(n, d) + 1);
 }
 
 export function prev(n: number, d: number) {

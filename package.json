@@ -1,37 +1,48 @@
 {
-    "name": "calkin-wilf",
-    "version": "1.0.0",
-    "description": "Calkin-Wilf bijection between integers and rational numbers.",
-    "main": "bin/index.js",
-    "files": [
-      "bin/index.js",
-      "bin/index.d.ts"
-    ],
-    "scripts": {
-      "test": "mocha -r ts-node/register test/**/*-test.ts",
-      "build": "tsc",
-      "lint": "eslint . --ext .ts --fix",
-      "minify": "jsmin -o bin/index.min.js bin/index.js && del bin\\index.js && move bin\\index.min.js bin\\index.js",
-      "prepare": "tsc && npm run minify"
-    },
-    "keywords": [
-      "calkin-wilf",
-      "bijection",
-      "rational"
-    ],
-    "author": "Logan R. Kearsley",
-    "license": "MIT",
-    "devDependencies": {
-      "@types/chai": "^4.2.14",
-      "@types/mocha": "^8.0.4",
-      "@typescript-eslint/eslint-plugin": "^4.10.0",
-      "@typescript-eslint/parser": "^4.10.0",
-      "chai": "^4.2.0",
-      "eslint": "^7.15.0",
-      "jsmin": "^1.0.1",
-      "mocha": "^8.2.1",
-      "ts-node": "^9.1.1",
-      "typescript": "^4.1.2"
-    }
-  }
-  
+  "name": "calkin-wilf",
+  "version": "1.0.0",
+  "description": "Calkin-Wilf bijection between integers and rational numbers.",
+  "main": "bin/index.js",
+  "files": [
+    "bin/index.js",
+    "bin/index.d.ts"
+  ],
+  "scripts": {
+    "test": "mocha -r ts-node/register test/**/*-test.ts",
+    "build": "tsc",
+    "lint": "eslint . --ext .ts --fix",
+    "minify": "jsmin -o bin/index.min.js bin/index.js && del bin\\index.js && move bin\\index.min.js bin\\index.js",
+    "prepare": "tsc && npm run minify"
+  },
+  "keywords": [
+    "calkin-wilf",
+    "bijection",
+    "rational"
+  ],
+  "author": "Logan R. Kearsley",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/chai": "^4.2.14",
+    "@types/mocha": "^8.0.4",
+    "@typescript-eslint/eslint-plugin": "^4.10.0",
+    "@typescript-eslint/parser": "^4.10.0",
+    "chai": "^4.2.0",
+    "eslint": "^7.15.0",
+    "jsmin": "^1.0.1",
+    "mocha": "^8.2.1",
+    "ts-node": "^9.1.1",
+    "typescript": "^4.1.2"
+  },
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gliese1337/calkin-wilf.git"
+  },
+  "bugs": {
+    "url": "https://github.com/gliese1337/calkin-wilf/issues"
+  },
+  "homepage": "https://github.com/gliese1337/calkin-wilf#readme"
+}

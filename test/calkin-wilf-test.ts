@@ -37,7 +37,7 @@ describe("Calkin-Wilf tests", () => {
   });
 
   it("should calculate successor relations", () => {
-    for (let i = 0; i < expected.length - 1; i++) {
+    for (let i = 1; i < expected.length - 1; i++) {
       expect(next(...expected[i])).to.eql(expected[i + 1]);
       expect(prev(...expected[i + 1])).to.eql(expected[i]);
     }
