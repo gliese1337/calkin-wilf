@@ -13,6 +13,25 @@ export function Q(n: number) {
   return [s * a[n], den];
 }
 
+export function F(i: number) {
+  if (i === 0) return [0, 1];
+  const s = Math.sign(i);
+  i *= s;
+
+  let n = 1;
+  let d = 1;
+  let digit = (1 << (Math.log2(i) | 0)) >> 1;
+  while(digit) {
+    if (i & digit) n += d; // x + 1
+    else d += n; // x / (x + 1)
+    digit >>= 1;
+  }
+
+  const pair = _reduce(n, d);
+  pair[0] *= s;
+  return pair;
+}
+
 function _reduce(n: number, d: number) {
   let [a, b] = [n, d];
   while (b) [a, b] = [b, a % b];
